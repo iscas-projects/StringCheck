@@ -5,6 +5,7 @@ plugins {
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
+var dependencyDirectory = "dependencies"
 
 repositories {
     mavenCentral()
@@ -49,9 +50,6 @@ sourceSets.main {
         srcDirs("src/main/java_src_snippets")
         exclude("src/main/kotlin")
     }
-    resources {
-        exclude("src/main/resources/**")
-    }
 }
 tasks.register("generateJpfConfig") {
     doLast {
@@ -64,7 +62,7 @@ tasks.register("generateJpfConfig") {
             config.writeText("""
                 target=$baseName
                 classpath=$dstPath;
-                classpath+=D:/IdeaProjects/StringCheck/src/main/resources/;
+                classpath+=${dependencyDirectory};
                 sourcepath=$srcPath
     
                 symbolic.dp=choco
@@ -88,17 +86,12 @@ tasks.register<Test>("testJar") {
     testClassesDirs = files(tasks.jar.get().archiveFile)
 }
 
-//tasks.register<JavaExec>("runJustinStr") {
-//    classpath = files("./src/main/resources/JustinStr.jar")
-//}
-
 tasks.processResources {
     exclude("*")
 }
 
 tasks.jar {
     dependsOn(tasks.compileJava)
-    exclude("build/resources/**")
     exclude("build/kotlin/main/**")
     from(tasks.compileJava.get().destinationDirectory)
 }
@@ -111,7 +104,7 @@ tasks.register("analyzeJustinInLoop") {
             javaexec {
                 workingDir = file("JustinOutput")
                 workingDir.mkdir()
-                classpath = files("./src/main/resources/JustinStr.jar")
+                classpath = files("$dependencyDirectory/JustinStr.jar")
                 logger.info(it.absolutePath)
 
                 args(
@@ -128,16 +121,14 @@ tasks.register("analyzeJpfInLoop") {
     doLast {
         tasks.compileJava.get().destinationDirectory.asFile.get().listFiles()?.forEach {
             if (it.name.contains(".jpf")) {
-                logger.error(it.absolutePath)
                 javaexec {
-                    classpath = files("./src/main/resources/jpf-core/build/RunJPF.jar")
-                    logger.error(classpath.asPath.toString())
-                    allJvmArgs = listOf(
+                    classpath = files("$dependencyDirectory/jpf-core/build/RunJPF.jar")
+                    jvmArgs = listOf(
                         "-Xmx1024m",
                         "-ea"
                     )
 
-                    workingDir = File("./src/main/resources");
+                    workingDir = File(dependencyDirectory);
 
                     args(
                         it.absolutePath

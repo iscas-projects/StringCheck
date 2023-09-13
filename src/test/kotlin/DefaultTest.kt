@@ -7,6 +7,6 @@ class MyTests {
     fun testJar() {
         // Initialize class from JAR
 
-        assertEquals(null, Src001.oob(""))
+        assertEquals(null, Src001.test(""))
     }
 }
