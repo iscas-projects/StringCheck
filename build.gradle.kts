@@ -1,3 +1,6 @@
+import jdk.internal.dynalink.linker.LinkerServices.Implementation
+import org.jetbrains.kotlin.incremental.createDirectory
+
 plugins {
     kotlin("jvm") version "1.9.0"
     application
@@ -6,6 +9,7 @@ plugins {
 group = "org.example"
 version = "1.0-SNAPSHOT"
 var dependencyDirectory = "dependencies"
+var datasetsDirectory = "datasets"
 
 repositories {
     mavenCentral()
@@ -29,7 +33,8 @@ dependencies {
 //            branch = "gradle-build"
 //        }
 //    }
-    testImplementation(kotlin("test"))
+    implementation("org.soot-oss:soot:4.4.1")
+    testImplementation("org.jetbrains.kotlin:kotlin-test:1.8.10")
 
 }
 
@@ -50,19 +55,37 @@ sourceSets.main {
         srcDirs("src/main/java_src_snippets")
         exclude("src/main/kotlin")
     }
+    kotlin {
+        srcDirs("src/main/kotlin")
+    }
 }
+
 tasks.register("generateJpfConfig") {
+    dependsOn(tasks.compileJava)
+    dependsOn(tasks.compileKotlin)
+
     doLast {
         fileTree("src/main/java_src_snippets").forEach {
             val baseName = it.name.removeSuffix(".java")
             val srcPath = "src/main/java_src_snippets"
-            val dstPath = buildDir.toString().replace("\\", "/") + "/classes/java/main/"
+            val dstPath = "$datasetsDirectory/$baseName/"
+            val dstFolder = file(dstPath)
+            dstFolder.createDirectory()
+            copy { from(it); into(dstFolder) }
+            copy { from("$buildDir/classes/java/main/$baseName.class"); into(dstFolder) }
+            javaexec {
+                args(
+                    dstFolder
+                )
+                mainClass = "MainKt"
+                classpath = sourceSets.main.get().runtimeClasspath
+            }
+
             val config = file("$dstPath$baseName.jpf")
             config.createNewFile()
             config.writeText("""
                 target=$baseName
-                classpath=$dstPath;
-                classpath+=${dependencyDirectory};
+                classpath=${dstFolder.absolutePath.replace("\\", "/")};
                 sourcepath=$srcPath
     
                 symbolic.dp=choco
@@ -98,7 +121,6 @@ tasks.jar {
 
 tasks.register("analyzeJustinInLoop") {
     dependsOn(tasks.jar)
-    dependsOn(tasks["generateJpfConfig"])
     doLast {
         tasks.jar.get().destinationDirectory.asFile.get().listFiles()?.forEach {
             javaexec {
@@ -118,22 +140,22 @@ tasks.register("analyzeJustinInLoop") {
 
 tasks.register("analyzeJpfInLoop") {
     dependsOn(tasks.compileJava)
+    dependsOn(tasks["generateJpfConfig"])
     doLast {
-        tasks.compileJava.get().destinationDirectory.asFile.get().listFiles()?.forEach {
-            if (it.name.contains(".jpf")) {
-                javaexec {
-                    classpath = files("$dependencyDirectory/jpf-core/build/RunJPF.jar")
-                    jvmArgs = listOf(
-                        "-Xmx1024m",
-                        "-ea"
-                    )
+       file(datasetsDirectory).listFiles()?.forEach {
+            javaexec {
+                classpath = files("$dependencyDirectory/jpf-core/build/RunJPF.jar")
+                jvmArgs = listOf(
+                    "-Xmx1024m",
+                    "-ea"
+                )
 
-                    workingDir = File(dependencyDirectory);
+                workingDir = File(dependencyDirectory);
 
-                    args(
-                        it.absolutePath
-                    )
-                }
+                args(
+                    "${it.absolutePath}/${it.name}.jpf"
+                )
+                logger.lifecycle(commandLine.toString())
             }
         }
     }
