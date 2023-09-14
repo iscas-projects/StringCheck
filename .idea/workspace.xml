@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f66c3ebd-0a65-4162-b277-c01bb664676e" name="更改" comment="maybe a better outline of the project ...">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/DisplayUtils.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/PathCollection.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/PathItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f66c3ebd-0a65-4162-b277-c01bb664676e" name="更改" comment="get kotlin src code to print paths in datasets">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/PathCollection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/PathCollection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/PathItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/PathItem.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +84,6 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "android.gradle.sync.needed": "true",
     "git-widget-placeholder": "experimental",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/IdeaProjects/StringCheck/src/main/resources/jpf-core/build/RunJPF.jar",
@@ -158,6 +154,28 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="StringCheck [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="StringCheck [generateJpfConfig]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -170,28 +188,6 @@
         <option name="taskNames">
           <list>
             <option value="generateJpfConfig" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="StringCheck [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -220,18 +216,18 @@
     <list>
       <item itemvalue="Gradle.StringCheck [buildDependents]" />
       <item itemvalue="Gradle.StringCheck [analyzeJpfInLoop]" />
+      <item itemvalue="Gradle.StringCheck [clean]" />
       <item itemvalue="Gradle.StringCheck [generateJpfConfig]" />
-      <item itemvalue="Gradle.StringCheck [jar]" />
       <item itemvalue="JAR 应用程序.jpf_run" />
       <item itemvalue="Kotlin.MainKt" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.StringCheck [generateJpfConfig]" />
+        <item itemvalue="Gradle.StringCheck [clean]" />
+        <item itemvalue="Gradle.StringCheck [analyzeJpfInLoop]" />
         <item itemvalue="Kotlin.MainKt" />
         <item itemvalue="Gradle.StringCheck [buildDependents]" />
-        <item itemvalue="Gradle.StringCheck [analyzeJpfInLoop]" />
-        <item itemvalue="Gradle.StringCheck [jar]" />
       </list>
     </recent_temporary>
   </component>
@@ -260,12 +256,21 @@
       <option name="project" value="LOCAL" />
       <updated>1694574780669</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="get kotlin src code to print paths in datasets">
+      <option name="closed" value="true" />
+      <created>1694668143712</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1694668143712</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="a rough sketch of the project. (maybe we don't need the libraries)" />
     <MESSAGE value="maybe a better outline of the project ..." />
-    <option name="LAST_COMMIT_MESSAGE" value="maybe a better outline of the project ..." />
+    <MESSAGE value="get kotlin src code to print paths in datasets" />
+    <option name="LAST_COMMIT_MESSAGE" value="get kotlin src code to print paths in datasets" />
   </component>
 </project>

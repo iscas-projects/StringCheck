@@ -8,11 +8,9 @@ import kotlin.collections.HashMap
 
 fun main(args: Array<String>) {
     // args: [path]
-    println(args[0])
     for (pathsOfFunc in slice(args[0])) {
         val dir = File(args[0] + File.separator + pathsOfFunc.key.replace("<", "《").replace(">", "》"))
-            println(dir)
-        if (dir.mkdir()) {
+        if (dir.isDirectory() || dir.mkdir()) {
             pathsOfFunc.value.forEachIndexed { index, path ->
                 File(dir, "$index.path").writeText(path)
             }
@@ -41,7 +39,8 @@ fun slice(classPath: String): Map<String, List<String>> {
 //            paths = paths.filterOutNotContainAny(blocksWithStringOps)
             val slicers = paths.map { Slicer(it) }
             if (b?.method?.name != null)
-                pathsOfFunc[b.method?.name!!] = slicers.map { it.getPath().joinToString("\n") }
+                pathsOfFunc[b.method?.name!!] = slicers.map { it.getStatistics() + "\n\n" +
+                        it.getPath().joinToString("\n") }
         }
     }))
     PackManager.v().runPacks()

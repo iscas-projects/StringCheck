@@ -1,5 +1,6 @@
-import jdk.internal.dynalink.linker.LinkerServices.Implementation
+import org.gradle.tooling.model.java.JavaRuntime
 import org.jetbrains.kotlin.incremental.createDirectory
+import java.io.FileOutputStream
 
 plugins {
     kotlin("jvm") version "1.9.0"
@@ -81,6 +82,7 @@ tasks.register("generateJpfConfig") {
                 classpath = sourceSets.main.get().runtimeClasspath
             }
 
+
             val config = file("$dstPath$baseName.jpf")
             config.createNewFile()
             config.writeText("""
@@ -129,8 +131,9 @@ tasks.register("analyzeJustinInLoop") {
                 classpath = files("$dependencyDirectory/JustinStr.jar")
                 logger.info(it.absolutePath)
 
+
                 args(
-                    "C:/Program Files/Eclipse Adoptium/jdk-8.0.345.1-hotspot/jre",
+                    System.getenv("JAVA_HOME") + "/jre",
                     it.absolutePath
                 )
             }
@@ -150,12 +153,12 @@ tasks.register("analyzeJpfInLoop") {
                     "-ea"
                 )
 
-                workingDir = File(dependencyDirectory);
+                workingDir = File(dependencyDirectory)
 
                 args(
                     "${it.absolutePath}/${it.name}.jpf"
                 )
-                logger.lifecycle(commandLine.toString())
+                standardOutput = FileOutputStream("${it.absolutePath}/${it.name}.jpf.output")
             }
         }
     }

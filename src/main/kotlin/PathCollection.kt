@@ -1,3 +1,4 @@
+import soot.SootMethod
 import soot.Unit
 import soot.Value
 import soot.jimple.GotoStmt
@@ -125,18 +126,27 @@ class Slicer(val programPath: List<Block>) {
     }
 
     fun getPath(): List<PathItem> {
-        return programPath.asReversed().zipWithNext().map { (prev, next) ->
-            prev.tail.let { jumpStatement ->
-                if (jumpStatement is IfStmt && jumpStatement.fallsThrough())
-                    if (jumpStatement.target == next.head)
-                        listOf(Single(jumpStatement.condition), Statement(jumpStatement))
-                    else listOf(Negate(Single(jumpStatement.condition)), Statement(jumpStatement))
-                else if (jumpStatement is GotoStmt)
-                    listOf()
-                else listOf(Statement(jumpStatement as Stmt))
-            }
-        }.flatten()
+        val exceptLastOne = programPath.asReversed().dropLast(1)
+        return exceptLastOne.zip(getPathConstraints()).map { (block, cond) ->
+            block.map { Statement(it as Stmt) } + cond
+        }.flatten() +
+                (programPath.getOrNull(0)?.map { Statement(it as Stmt) }?: emptyList())
     }
+
+    private fun getApiTypes(): Map<SootMethod, Int> {
+        return stmts.mapNotNull { unit ->
+            if ((unit as Stmt).containsInvokeExpr())
+                unit.invokeExpr.method
+            else null
+        }.filter { it.name.contains("toString") ||
+                it.signature.contains("java.lang.String") ||
+                it.signature.contains("CharSequence")
+        }.groupBy { it }
+            .mapValues { it.value.count() }
+    }
+
+    fun getStatistics() = "involved APIs: ${getApiTypes().entries.joinToString("\n")}\n" +
+            "longest API chain: \n"
 }
 
 fun getParameterAndReceiver(stmt: Stmt): List<Value> {

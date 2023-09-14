@@ -39,6 +39,6 @@ class Intersect(private val leftCond: Condition, private val rightCond: Conditio
 
 class Nop(private val debugInfo: String = ""): Condition {
     override fun toString(): String {
-        return ""//debugInfo.ifEmpty { "" }
+        return "Non Conditional"//debugInfo.ifEmpty { "" }
     }
 }
