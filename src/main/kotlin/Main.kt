@@ -1,10 +1,8 @@
 import soot.*
-import soot.options.Options;
-import soot.toolkits.graph.Block
+import soot.options.Options
 import soot.toolkits.graph.ExceptionalBlockGraph
 import java.io.File
 import java.util.*
-import kotlin.collections.HashMap
 
 fun main(args: Array<String>) {
     // args: [path]

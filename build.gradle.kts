@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.libsDirectory
 import org.jetbrains.kotlin.incremental.createDirectory
 import java.io.BufferedOutputStream
 import java.io.FileOutputStream

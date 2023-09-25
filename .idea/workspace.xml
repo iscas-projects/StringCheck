@@ -4,43 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f66c3ebd-0a65-4162-b277-c01bb664676e" name="更改" comment="fix some bugs">
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src003.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src004.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src005.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src006.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src007.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src008.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src009.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src010.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src011.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src012.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src013.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src014.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src015.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src016.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src017.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src018.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src019.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src020.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src021.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src022.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src023.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src024.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src025.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src026.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src027.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src028.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src029.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src030.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src031.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src032.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src033.java" afterDir="false" />
+    <list default="true" id="f66c3ebd-0a65-4162-b277-c01bb664676e" name="更改" comment="propose a way to figure out the api call chain to produce a condition">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java_src_snippets/Src001.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src001.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java_src_snippets/Src002.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src002.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java_src_snippets/Src015.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src015.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/PathCollection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/PathCollection.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +88,7 @@
     "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "File.Encoding"
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -141,8 +107,8 @@
       <command value="find action" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.StringCheck [separateJar]">
-    <configuration name="StringCheck [analyzeJustinInLoop]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.StringCheck [analyzeJpfInLoop]">
+    <configuration name="StringCheck [analyzeJpfInLoop]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -153,7 +119,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="analyzeJustinInLoop" />
+            <option value="analyzeJpfInLoop" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -248,18 +214,18 @@
     <list>
       <item itemvalue="Gradle.StringCheck [jar]" />
       <item itemvalue="Gradle.StringCheck [separateJar]" />
-      <item itemvalue="Gradle.StringCheck [analyzeJustinInLoop]" />
+      <item itemvalue="Gradle.StringCheck [analyzeJpfInLoop]" />
       <item itemvalue="Gradle.StringCheck [generateJpfConfig]" />
       <item itemvalue="JAR 应用程序.jpf_run" />
       <item itemvalue="Kotlin.PathCollectionKt" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.StringCheck [analyzeJpfInLoop]" />
+        <item itemvalue="Kotlin.PathCollectionKt" />
         <item itemvalue="Gradle.StringCheck [separateJar]" />
         <item itemvalue="Gradle.StringCheck [jar]" />
-        <item itemvalue="Kotlin.PathCollectionKt" />
         <item itemvalue="Gradle.StringCheck [generateJpfConfig]" />
-        <item itemvalue="Gradle.StringCheck [analyzeJustinInLoop]" />
       </list>
     </recent_temporary>
   </component>
@@ -304,7 +270,23 @@
       <option name="project" value="LOCAL" />
       <updated>1694677575831</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="make jars separately for every class file">
+      <option name="closed" value="true" />
+      <created>1695621126760</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1695621126760</updated>
+    </task>
+    <task id="LOCAL-00006" summary="propose a way to figure out the api call chain to produce a condition">
+      <option name="closed" value="true" />
+      <created>1695628576228</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1695628576228</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -324,6 +306,19 @@
     <MESSAGE value="get kotlin src code to print paths in datasets" />
     <MESSAGE value="fix some" />
     <MESSAGE value="fix some bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix some bugs" />
+    <MESSAGE value="make jars separately for every class file" />
+    <MESSAGE value="propose a way to figure out the api call chain to produce a condition" />
+    <option name="LAST_COMMIT_MESSAGE" value="propose a way to figure out the api call chain to produce a condition" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/PathCollection.kt</url>
+          <line>173</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
