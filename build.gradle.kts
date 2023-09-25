@@ -1,6 +1,9 @@
-import org.gradle.tooling.model.java.JavaRuntime
+import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.libsDirectory
 import org.jetbrains.kotlin.incremental.createDirectory
+import java.io.BufferedOutputStream
 import java.io.FileOutputStream
+import java.util.jar.JarOutputStream
+import java.util.zip.ZipEntry
 
 plugins {
     kotlin("jvm") version "1.9.0"
@@ -103,6 +106,10 @@ tasks.register("generateJpfConfig") {
 }
 
 tasks.compileJava {
+    val javaHome = System.getProperty("java.home")
+    classpath += files(file("$javaHome/lib/rt.jar"),
+        file("$javaHome/lib/rce.jar"),
+        file("$javaHome/lib/jsse.jar"))
     options.compilerArgs.add("-g")
 }
 
@@ -119,6 +126,32 @@ tasks.jar {
     dependsOn(tasks.compileJava)
     exclude("build/kotlin/main/**")
     from(tasks.compileJava.get().destinationDirectory)
+    logger.lifecycle(tasks.compileJava.get().destinationDirectory.toString())
+}
+
+tasks.register("separateJar") {
+    dependsOn(tasks.compileJava)
+    logger.info(tasks.compileJava.get().destinationDirectory.asFile.get().listFiles()?.joinToString("\n"))
+    doLast {
+        tasks.compileJava.get().destinationDirectory.asFile.get().listFiles()?.forEach {
+            val baseClassName = it.name.removeSuffix(".class").substringBefore('$')
+
+            val jarFile = File("$datasetsDirectory/${baseClassName}/", "${baseClassName}.jar")
+            JarOutputStream(BufferedOutputStream(FileOutputStream(jarFile))).use { out ->
+                val entry = ZipEntry(it.name)
+                out.putNextEntry(entry)
+                it.inputStream().copyTo(out)
+                out.closeEntry()
+                //TODO: make manifests
+//
+//                val manifest =
+//                manifest.mainAttributes["Main-Class"] = baseClassName
+//                out.putNextEntry(ZipEntry("META-INF/MANIFEST.MF"))
+//                manifest.write(out)
+//                out.closeEntry()
+            }
+        }
+    }
 }
 
 tasks.register("analyzeJustinInLoop") {
@@ -133,7 +166,7 @@ tasks.register("analyzeJustinInLoop") {
 
 
                 args(
-                    System.getenv("JAVA_HOME") + "/jre",
+                    "C:/Program Files/Eclipse Adoptium/jdk-8.0.345.1-hotspot/jre",
                     it.absolutePath
                 )
             }

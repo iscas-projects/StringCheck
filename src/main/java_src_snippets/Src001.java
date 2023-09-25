@@ -1,3 +1,4 @@
+// Bug related URL: https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8278186
 class Src001 {
     public static void main(String[] args) {
         test("xxpointer(id(");

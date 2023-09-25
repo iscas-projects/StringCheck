@@ -8,8 +8,8 @@ import kotlin.collections.HashMap
 
 fun main(args: Array<String>) {
     // args: [path]
-    for (pathsOfFunc in slice(args[0])) {
-        val dir = File(args[0] + File.separator + pathsOfFunc.key.replace("<", "《").replace(">", "》"))
+    for (pathsOfFunc in slice(args[0])) { // write to .path files
+        val dir = File(args[0] + File.separator + "method-" + pathsOfFunc.key.replace("<", "《").replace(">", "》"))
         if (dir.isDirectory() || dir.mkdir()) {
             pathsOfFunc.value.forEachIndexed { index, path ->
                 File(dir, "$index.path").writeText(path)
@@ -18,7 +18,10 @@ fun main(args: Array<String>) {
     }
 }
 
+/// produce a report of every method, which contains the program path, path conditions
+// and some statistics
 fun slice(classPath: String): Map<String, List<String>> {
+    // init soot
     G.reset()
     Options.v().set_prepend_classpath(true)
 

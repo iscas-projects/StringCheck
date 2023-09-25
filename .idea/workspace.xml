@@ -4,12 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f66c3ebd-0a65-4162-b277-c01bb664676e" name="更改" comment="get kotlin src code to print paths in datasets">
+    <list default="true" id="f66c3ebd-0a65-4162-b277-c01bb664676e" name="更改" comment="fix some bugs">
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src003.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src004.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src005.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src006.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src007.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src008.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src009.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src010.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src011.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src012.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src013.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src014.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src015.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src016.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src017.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src018.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src019.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src020.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src021.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src022.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src023.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src024.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src025.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src026.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src027.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src028.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src029.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src030.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src031.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src032.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src033.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java_src_snippets/Src001.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src001.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java_src_snippets/Src002.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src002.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/PathCollection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/PathCollection.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/PathItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/PathItem.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +72,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin File" />
-        <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -90,7 +122,7 @@
     "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "settings.editor.selected.configurable": "File.Encoding"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -109,30 +141,8 @@
       <command value="find action" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.StringCheck [generateJpfConfig]">
-    <configuration name="StringCheck [analyzeJpfInLoop]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="analyzeJpfInLoop" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="StringCheck [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.StringCheck [separateJar]">
+    <configuration name="StringCheck [analyzeJustinInLoop]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -143,29 +153,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="buildDependents" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="StringCheck [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
+            <option value="analyzeJustinInLoop" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -198,6 +186,50 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="StringCheck [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="StringCheck [separateJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--info" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="separateJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="jpf_run" type="JarApplication">
       <option name="JAR_PATH" value="$PROJECT_DIR$/src/main/resources/jpf-core/build/RunJPF.jar" />
       <option name="VM_PARAMETERS" value="-Xmx1024m -ea" />
@@ -206,28 +238,28 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2" />
     </configuration>
-    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainKt" />
+    <configuration name="PathCollectionKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="PathCollectionKt" />
       <module name="StringCheck.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.StringCheck [buildDependents]" />
-      <item itemvalue="Gradle.StringCheck [analyzeJpfInLoop]" />
-      <item itemvalue="Gradle.StringCheck [clean]" />
+      <item itemvalue="Gradle.StringCheck [jar]" />
+      <item itemvalue="Gradle.StringCheck [separateJar]" />
+      <item itemvalue="Gradle.StringCheck [analyzeJustinInLoop]" />
       <item itemvalue="Gradle.StringCheck [generateJpfConfig]" />
       <item itemvalue="JAR 应用程序.jpf_run" />
-      <item itemvalue="Kotlin.MainKt" />
+      <item itemvalue="Kotlin.PathCollectionKt" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.StringCheck [separateJar]" />
+        <item itemvalue="Gradle.StringCheck [jar]" />
+        <item itemvalue="Kotlin.PathCollectionKt" />
         <item itemvalue="Gradle.StringCheck [generateJpfConfig]" />
-        <item itemvalue="Gradle.StringCheck [clean]" />
-        <item itemvalue="Gradle.StringCheck [analyzeJpfInLoop]" />
-        <item itemvalue="Kotlin.MainKt" />
-        <item itemvalue="Gradle.StringCheck [buildDependents]" />
+        <item itemvalue="Gradle.StringCheck [analyzeJustinInLoop]" />
       </list>
     </recent_temporary>
   </component>
@@ -264,13 +296,34 @@
       <option name="project" value="LOCAL" />
       <updated>1694668143712</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix some bugs">
+      <option name="closed" value="true" />
+      <created>1694677575831</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1694677575831</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="a rough sketch of the project. (maybe we don't need the libraries)" />
     <MESSAGE value="maybe a better outline of the project ..." />
     <MESSAGE value="get kotlin src code to print paths in datasets" />
-    <option name="LAST_COMMIT_MESSAGE" value="get kotlin src code to print paths in datasets" />
+    <MESSAGE value="fix some" />
+    <MESSAGE value="fix some bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix some bugs" />
   </component>
 </project>

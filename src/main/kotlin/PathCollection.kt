@@ -1,13 +1,16 @@
-import soot.SootMethod
+import soot.*
 import soot.Unit
-import soot.Value
 import soot.jimple.GotoStmt
 import soot.jimple.IfStmt
 import soot.jimple.Stmt
 import soot.jimple.internal.JAssignStmt
+import soot.options.Options
 import soot.toolkits.graph.Block
 import soot.toolkits.graph.BlockGraph
+import soot.toolkits.graph.ExceptionalBlockGraph
+import java.util.*
 import javax.swing.plaf.nimbus.State
+import kotlin.collections.HashMap
 
 /// note here the representation of a path is List<Block>
 /// with the tail appear at path[0]
@@ -51,9 +54,10 @@ fun <T> Set<List<T>>.getAllVariablesShownInChains(): Set<T> {
         .toSet()
 }
 
+// used to unfold the program loop for `times`
 fun <T> Set<List<T>>.getItemsAppearingInEachPathsNoMoreThan(items: Set<T>, times: Int): List<T> {
     return items.filter { item ->
-        this.all { lst -> lst.count { it == item } < times }
+        this.all { lst -> lst.count { it == item } <= times }
     }
 }
 
@@ -168,7 +172,31 @@ fun hasStringOps(bl: Block): Boolean {
 }
 
 fun main() {
+    G.reset()
+    Options.v().set_prepend_classpath(true)
 
-    var a = listOf(listOf(1, 2), listOf(3, 4, 5), listOf(1, 3))
-    print(111)
+    Options.v().set_src_prec(Options.src_prec_class)
+    //Options.v().set_src_prec(Options.src_prec_apk);
+    //Options.v().set_android_jars(android_jars);
+    Options.v().set_process_dir(Collections.singletonList("datasets/Src003/"))
+    Options.v().set_allow_phantom_refs(true)
+    Scene.v().addBasicClass("java.lang.String", SootClass.BODIES)
+    Scene.v().loadNecessaryClasses()
+    val pathsOfFunc = HashMap<String, List<String>>()
+
+    PackManager.v().getPack("jtp").add(Transform("jtp.mySlicer", object : BodyTransformer() {
+        override fun internalTransform(b: Body?, phaseName: String?, options: MutableMap<String, String>?) {
+            val blockCFG = ExceptionalBlockGraph(b)
+            var paths = constructPath(blockCFG)
+//            val blocksWithStringOps = blockCFG.blocks.filter { hasStringOps(it) }
+//            paths = paths.filterOutNotContainAny(blocksWithStringOps)
+            val slicers = paths.map { Slicer(it) }
+            if (b?.method?.name != null)
+                println(slicers.map {
+                    it.getStatistics() + "\n\n" +
+                            it.getPath().joinToString("\n")
+                })
+        }
+    }))
+    PackManager.v().runPacks()
 }
