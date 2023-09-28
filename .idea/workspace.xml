@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f66c3ebd-0a65-4162-b277-c01bb664676e" name="更改" comment="propose a way to figure out the api call chain to produce a condition">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java_src_snippets/Src015.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src015.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/PathCollection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/PathCollection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java_src_snippets/Src004.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src004.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java_src_snippets/Src005.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java_src_snippets/Src005.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,8 +108,8 @@
       <command value="find action" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.StringCheck [analyzeJpfInLoop]">
-    <configuration name="StringCheck [analyzeJpfInLoop]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.StringCheck [separateJar]">
+    <configuration name="StringCheck [aaa]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -119,7 +120,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="analyzeJpfInLoop" />
+            <option value="aaa" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -135,13 +136,35 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--info" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
             <option value="generateJpfConfig" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="StringCheck [jarBuilderSrc001]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jarBuilderSrc001" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -204,27 +227,20 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2" />
     </configuration>
-    <configuration name="PathCollectionKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PathCollectionKt" />
-      <module name="StringCheck.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
+      <item itemvalue="Gradle.StringCheck [aaa]" />
+      <item itemvalue="Gradle.StringCheck [jarBuilderSrc001]" />
       <item itemvalue="Gradle.StringCheck [jar]" />
       <item itemvalue="Gradle.StringCheck [separateJar]" />
-      <item itemvalue="Gradle.StringCheck [analyzeJpfInLoop]" />
       <item itemvalue="Gradle.StringCheck [generateJpfConfig]" />
       <item itemvalue="JAR 应用程序.jpf_run" />
-      <item itemvalue="Kotlin.PathCollectionKt" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.StringCheck [analyzeJpfInLoop]" />
-        <item itemvalue="Kotlin.PathCollectionKt" />
         <item itemvalue="Gradle.StringCheck [separateJar]" />
         <item itemvalue="Gradle.StringCheck [jar]" />
+        <item itemvalue="Gradle.StringCheck [aaa]" />
+        <item itemvalue="Gradle.StringCheck [jarBuilderSrc001]" />
         <item itemvalue="Gradle.StringCheck [generateJpfConfig]" />
       </list>
     </recent_temporary>
@@ -286,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695628576228</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="propose a way to figure out the api call chain to produce a condition">
+      <option name="closed" value="true" />
+      <created>1695712371000</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1695712371000</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

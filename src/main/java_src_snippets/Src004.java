@@ -5,11 +5,11 @@ public class Src004 {
             return false;
         } else {
             char c = value.charAt(0);
-            if (!XmlChars.isLetter(c) && c != '_' && c != ':') {
+            if (!isLetter(c) && c != '_' && c != ':') {
                 return false;
             } else {
                 for(int i = 1; i < value.length(); ++i) {
-                    if (!XmlChars.isNameChar(value.charAt(i))) {
+                    if (!isNameChar(value.charAt(i))) {
                         return false;
                     }
                 }
@@ -19,13 +19,11 @@ public class Src004 {
         }
     }
 
-    private static class XmlChars {
-        public static boolean isNameChar(char c) {
-            return false;
-        }
-
-        public static boolean isLetter(char c) {
-            return false;
-        }
+    public static boolean isNameChar(char c) {
+        return false;
     }
+
+    public static boolean isLetter(char c) {
+            return false;
+        }
 }

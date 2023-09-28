@@ -11,8 +11,8 @@ plugins {
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
-var dependencyDirectory = "dependencies"
-var datasetsDirectory = "datasets"
+val dependencyDirectory = "dependencies"
+val datasetsDirectory = "datasets"
 
 repositories {
     mavenCentral()
@@ -125,31 +125,38 @@ tasks.jar {
     dependsOn(tasks.compileJava)
     exclude("build/kotlin/main/**")
     from(tasks.compileJava.get().destinationDirectory)
+    archiveBaseName = "aaa"
+    destinationDirectory = file("${datasetsDirectory}/Src000")
     logger.lifecycle(tasks.compileJava.get().destinationDirectory.toString())
+}
+
+tasks.compileJava.get().destinationDirectory.asFile.get().listFiles()?.forEach {
+    val baseClassName = it.name.removeSuffix(".class").substringBefore('$')
+    tasks.register<Jar>("jarBuilder${it.name.removeSuffix(".class")}") {
+        group = "batch_jar_generation"
+        dependsOn(tasks.compileJava)
+        archiveBaseName = baseClassName
+        from(it.absolutePath)
+        destinationDirectory = file("$datasetsDirectory/${baseClassName}")
+    }
+}
+
+tasks.register<Jar>("aaa") {
+    group = "batch_jar_generation"
+    dependsOn(tasks.compileJava)
+    archiveBaseName = "Src111"
+    from("build/classes/java/main/Src000.class")
+    into("$datasetsDirectory/Src000")
 }
 
 tasks.register("separateJar") {
     dependsOn(tasks.compileJava)
-    logger.info(tasks.compileJava.get().destinationDirectory.asFile.get().listFiles()?.joinToString("\n"))
+    dependsOn(tasks["generateJpfConfig"])
+    tasks.compileJava.get().destinationDirectory.asFile.get().listFiles()?.forEach {
+        dependsOn(tasks["jarBuilder${it.name.removeSuffix(".class")}"])
+    }
     doLast {
-        tasks.compileJava.get().destinationDirectory.asFile.get().listFiles()?.forEach {
-            val baseClassName = it.name.removeSuffix(".class").substringBefore('$')
-
-            val jarFile = File("$datasetsDirectory/${baseClassName}/", "${baseClassName}.jar")
-            JarOutputStream(BufferedOutputStream(FileOutputStream(jarFile))).use { out ->
-                val entry = ZipEntry(it.name)
-                out.putNextEntry(entry)
-                it.inputStream().copyTo(out)
-                out.closeEntry()
-                //TODO: make manifests
-//
-//                val manifest =
-//                manifest.mainAttributes["Main-Class"] = baseClassName
-//                out.putNextEntry(ZipEntry("META-INF/MANIFEST.MF"))
-//                manifest.write(out)
-//                out.closeEntry()
-            }
-        }
+        print("jars generated successfully")
     }
 }
 
