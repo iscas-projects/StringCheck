@@ -110,6 +110,7 @@ tasks.compileJava {
         file("$javaHome/lib/rce.jar"),
         file("$javaHome/lib/jsse.jar"))
     options.compilerArgs.add("-g")
+    options.compilerArgs.plusAssign("-XDignore.symbol.file")
 }
 
 // TODO: here is a 'deprecated' problem
@@ -121,15 +122,16 @@ tasks.processResources {
     exclude("*")
 }
 
-tasks.jar {
-    dependsOn(tasks.compileJava)
-    exclude("build/kotlin/main/**")
-    from(tasks.compileJava.get().destinationDirectory)
-    archiveBaseName = "aaa"
-    destinationDirectory = file("${datasetsDirectory}/Src000")
-    logger.lifecycle(tasks.compileJava.get().destinationDirectory.toString())
-}
+//tasks.jar {
+//    dependsOn(tasks.compileJava)
+//    exclude("build/kotlin/main/**")
+//    from(tasks.compileJava.get().destinationDirectory)
+//    archiveBaseName = "aaa"
+//    destinationDirectory = file("${datasetsDirectory}/Src000")
+//    logger.lifecycle(tasks.compileJava.get().destinationDirectory.toString())
+//}
 
+// multiple tasks to generate jar in batch
 tasks.compileJava.get().destinationDirectory.asFile.get().listFiles()?.forEach {
     val baseClassName = it.name.removeSuffix(".class").substringBefore('$')
     tasks.register<Jar>("jarBuilder${it.name.removeSuffix(".class")}") {
@@ -141,14 +143,7 @@ tasks.compileJava.get().destinationDirectory.asFile.get().listFiles()?.forEach {
     }
 }
 
-tasks.register<Jar>("aaa") {
-    group = "batch_jar_generation"
-    dependsOn(tasks.compileJava)
-    archiveBaseName = "Src111"
-    from("build/classes/java/main/Src000.class")
-    into("$datasetsDirectory/Src000")
-}
-
+// execute multiple jar tasks
 tasks.register("separateJar") {
     dependsOn(tasks.compileJava)
     dependsOn(tasks["generateJpfConfig"])
@@ -160,12 +155,24 @@ tasks.register("separateJar") {
     }
 }
 
-tasks.register("analyzeJustinInLoop") {
-    dependsOn(tasks.jar)
+tasks.register("analyzeDummyInLoop") {
+    dependsOn(tasks.compileJava)
     doLast {
-        tasks.jar.get().destinationDirectory.asFile.get().listFiles()?.forEach {
+        file(datasetsDirectory).listFiles()?.forEach {
+            val workingDir = file("${it.absolutePath}/DummyOutput")
+            workingDir.mkdir()
+            val results = file("${it.absolutePath}/DummyOutput/results.txt")
+            results.writeText("No use. Dummy output.")
+        }
+    }
+}
+
+tasks.register("analyzeJustinInLoop") {
+    dependsOn(tasks["separateJar"])
+    doLast {
+        file(datasetsDirectory).listFiles()?.forEach {
             javaexec {
-                workingDir = file("JustinOutput")
+                workingDir = file("${it.absolutePath}/JustinOutput")
                 workingDir.mkdir()
                 classpath = files("$dependencyDirectory/JustinStr.jar")
                 logger.info(it.absolutePath)
@@ -173,7 +180,7 @@ tasks.register("analyzeJustinInLoop") {
 
                 args(
                     "C:/Program Files/Eclipse Adoptium/jdk-8.0.345.1-hotspot/jre",
-                    it.absolutePath
+                    "${it.absolutePath}/${it.name}-1.0-SNAPSHOT.jar"
                 )
             }
         }

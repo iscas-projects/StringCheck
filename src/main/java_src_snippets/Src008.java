@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 
 // related URL: https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8279342
+
 public class Src008 {
     public static void main(String[] args) throws IOException {
         String[] stringArray0 = {"i53tfnIq_68", "", " #", "^[1]([3-9])[0-9]{9}$"};

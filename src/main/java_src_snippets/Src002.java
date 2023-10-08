@@ -1,5 +1,5 @@
 // Bug related URL: https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8278993
-class Src002 {
+public class Src002 {
     public static void main(String[] args) {
         test("abc");
     }
