@@ -96,7 +96,7 @@ tasks.register("generateJpfConfig") {
                 symbolic.string_dp=automata
                 symbolic.string_dp_timeout_ms=3000
     
-                symbolic.method=$baseName.test(sym)
+                #symbolic.method=$baseName.test(sym)
                 search.depth_limit = 10
                 listener = gov.nasa.jpf.symbc.sequences.SymbolicSequenceListener
             """.trimIndent())
