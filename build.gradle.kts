@@ -91,14 +91,17 @@ tasks.register("generateJpfConfig") {
                 target=$baseName
                 classpath=${dstFolder.absolutePath.replace("\\", "/")};
                 sourcepath=$srcPath
+                symbolic.strings = true
     
-                symbolic.dp=choco
-                symbolic.string_dp=automata
+                symbolic.dp=z3
+                symbolic.string_dp=z3str3
                 symbolic.string_dp_timeout_ms=3000
+                symbolic.debug=true
+                verify=gov.nasa.jpf.vm.Verify
     
-                #symbolic.method=$baseName.test(sym)
+                symbolic.method=$baseName.test(sym)
                 search.depth_limit = 10
-                listener = gov.nasa.jpf.symbc.sequences.SymbolicSequenceListener
+                #listener = gov.nasa.jpf.symbc.sequences.SymbolicSequenceListener
             """.trimIndent())
         }
     }
@@ -188,23 +191,46 @@ tasks.register("analyzeJustinInLoop") {
 }
 
 tasks.register("analyzeJpfInLoop") {
-    dependsOn(tasks.compileJava)
-    dependsOn(tasks["generateJpfConfig"])
+//    dependsOn(tasks.compileJava)
+//    dependsOn(tasks["generateJpfConfig"])
     doLast {
-       file(datasetsDirectory).listFiles()?.forEach {
+       file(datasetsDirectory).listFiles()?.get(4)?.let {
+//            javaexec {
+//                classpath = files("$dependencyDirectory/jpf-core/build/RunJPF.jar")
+//                jvmArgs = listOf(
+//                    "-Xmx1024m",
+//                    "-ea"
+//                )
+//
+//                workingDir = File(dependencyDirectory)
+//
+//                args(
+//                    "${it.absolutePath}/${it.name}.jpf"
+//                )
+//                standardOutput = FileOutputStream("${it.absolutePath}/${it.name}.jpf.output")
+//            }
+           // temporarily use an external project structure
             javaexec {
-                classpath = files("$dependencyDirectory/jpf-core/build/RunJPF.jar")
+                classpath = files("D:/IdeaProjects/SPF/jpf-tryout/build/classes/java/main/",
+                    fileTree("D:/IdeaProjects/SPF/jpf-core/build/libs/"),
+                    fileTree("D:/IdeaProjects/SPF/jpf-core/build/"),
+                    fileTree("D:/IdeaProjects/SPF/jpf-symbc/lib/"),
+                    fileTree("D:/IdeaProjects/SPF/jpf-symbc/build/libs/"))
+                mainClass = "org.example.Main"
                 jvmArgs = listOf(
                     "-Xmx1024m",
-                    "-ea"
+                    "-ea",
                 )
+                environment("PATH", "D:\\IdeaProjects\\SPF\\jpf-symbc\\lib\\;"
+                    + System.getenv("PATH"))
 
-                workingDir = File(dependencyDirectory)
+                println(systemProperties["java.library.path"])
 
+                workingDir = File("D:\\IdeaProjects\\SPF")
                 args(
-                    "${it.absolutePath}/${it.name}.jpf"
+                    "${it.absolutePath}/${it.name}.jpf",
+                    "${it.absolutePath}/${it.name}.jpf.output"
                 )
-                standardOutput = FileOutputStream("${it.absolutePath}/${it.name}.jpf.output")
             }
         }
     }

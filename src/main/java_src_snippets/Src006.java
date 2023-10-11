@@ -1,6 +1,11 @@
 // related URL: https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8279218
 public class Src006 {
-    public static int[] parseVersion(String version) {
+    public static void main(String[] args) {
+        String string0 = "";
+        test(string0);
+    }
+
+    public static int[] test(String version) {
         if (version == null)
             return new int[0];
         char[] s = version.toCharArray();

@@ -1,6 +1,10 @@
 // related URL: https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8279128
 public class Src004 {
-    public static boolean isName(String value) {
+    public static void main(String[] args) {
+        String string0 = "";
+        test(string0);
+    }
+    public static boolean test(String value) {
         if (value == null) {
             return false;
         } else {
