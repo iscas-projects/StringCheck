@@ -7,18 +7,21 @@ public class Src009 {
     private char buf[];
     private long len;
 
-    public static void test_setString_119_125() throws java.sql.SQLException{
+    public Src009(char[] chars) {
+    }
+
+    public static void main(String[] args) throws SerialException {
         long long1 = -1L;
         String string2 = "{\"key\":null}";
         int int3 = -1;
         int int4 = -1;
         char[] charArray5 = {'\''};
-        javax.sql.rowset.serial.SerialClob serialClob0 = new javax.sql.rowset.serial.SerialClob(charArray5);
-        serialClob0.setString(long1, string2, int3, int4);
+        Src009 src009 = new Src009(charArray5);
+        src009.test(long1, string2, int3, int4);
     }
 
     public int setString(long pos, String str) throws SerialException {
-        return (setString(pos, str, 0, str.length()));
+        return (test(pos, str, 0, str.length()));
     }
 
     private void isValid() throws SerialException {
@@ -28,7 +31,7 @@ public class Src009 {
         }
     }
 
-    public int setString(long pos, String str, int offset, int length)
+    public int test(long pos, String str, int offset, int length)
             throws SerialException {
         isValid();
         if (offset < 0 || offset > str.length()) {

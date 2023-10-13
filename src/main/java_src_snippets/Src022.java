@@ -5,7 +5,8 @@ public class Src022 {
     }
 
     public static boolean test(String str) {
-        return isBlank(str.replace(str.charAt(0), ' '));
+        char charAt = str.charAt(0);
+        return isBlank(str.replace(charAt, ' '));
     }
 
     public static boolean isBlank(CharSequence str) {

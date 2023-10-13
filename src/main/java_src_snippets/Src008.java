@@ -9,12 +9,12 @@ import java.io.IOException;
 public class Src008 {
     public static void main(String[] args) throws IOException {
         String[] stringArray0 = {"i53tfnIq_68", "", " #", "^[1]([3-9])[0-9]{9}$"};
-        _main(stringArray0);
+        test(stringArray0);
     }
     public Src008(JavaClass javaClass, String dir) {
     }
 
-    public static void _main(final String[] argv) throws IOException {
+    public static void test(final String[] argv) throws IOException {
         final String[] fileName = new String[argv.length];
         int files = 0;
         ClassParser parser = null;

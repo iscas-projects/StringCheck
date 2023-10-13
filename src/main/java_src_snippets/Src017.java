@@ -8,9 +8,9 @@ public class Src017 {
                 {0, Integer.MIN_VALUE, Integer.MIN_VALUE},
                 {0, Integer.MIN_VALUE, Integer.MIN_VALUE}
         };
-        zobrist(charArray0, int1, intArray2);
+        test(charArray0, int1, intArray2);
     }
-    public static int zobrist(char[] key, int mask, int[][] tab) {
+    public static int test(char[] key, int mask, int[][] tab) {
         int hash = key.length;
 
         for (int i = 0; i < key.length; ++i) {

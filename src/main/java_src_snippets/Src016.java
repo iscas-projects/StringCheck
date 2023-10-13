@@ -6,9 +6,9 @@ public class Src016 {
         char char1 = '%';
         char char2 = '$';
         Src016 src016 = new Src016();
-        src016.compare(char1, char2);
+        src016.test(char1, char2);
     }
-    public boolean compare(char cur, char peek) {
+    public boolean test(char cur, char peek) {
         final int offset = 40;
         if (cur == '%') {
             cur = 47;

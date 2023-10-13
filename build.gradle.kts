@@ -76,10 +76,12 @@ tasks.register("generateJpfConfig") {
             dstFolder.createDirectory()
             copy { from(it); into(dstFolder) }
             copy { from("$buildDir/classes/java/main/$baseName.class"); into(dstFolder) }
+            // TODO: move the kotlin code to `buildSrc`
             javaexec {
                 args(
                     dstFolder
                 )
+                logger.lifecycle(dstFolder.name)
                 mainClass = "MainKt"
                 classpath = sourceSets.main.get().runtimeClasspath
             }
@@ -99,7 +101,7 @@ tasks.register("generateJpfConfig") {
                 symbolic.debug=true
                 verify=gov.nasa.jpf.vm.Verify
     
-                symbolic.method=$baseName.test(sym)
+                symbolic.method=$baseName.test(${getSymbolicSignature(it.absolutePath)})
                 search.depth_limit = 10
                 #listener = gov.nasa.jpf.symbc.sequences.SymbolicSequenceListener
             """.trimIndent())
@@ -177,13 +179,16 @@ tasks.register("analyzeJustinInLoop") {
             javaexec {
                 workingDir = file("${it.absolutePath}/JustinOutput")
                 workingDir.mkdir()
-                classpath = files("$dependencyDirectory/JustinStr.jar")
-                logger.info(it.absolutePath)
+                classpath = files("D:\\learning\\JustinStr-New\\out\\artifacts\\JustinStr_jar\\JustinStr.jar")
 
-
+                logger.lifecycle(it.name)
                 args(
+                    "--jre",
                     "C:/Program Files/Eclipse Adoptium/jdk-8.0.345.1-hotspot/jre",
-                    "${it.absolutePath}/${it.name}-1.0-SNAPSHOT.jar"
+                    "--input",
+                    "${it.absolutePath}/${it.name}-1.0-SNAPSHOT.jar",
+                    "--output",
+                    "${it.absolutePath}/JustinOutput"
                 )
             }
         }
@@ -194,22 +199,24 @@ tasks.register("analyzeJpfInLoop") {
 //    dependsOn(tasks.compileJava)
 //    dependsOn(tasks["generateJpfConfig"])
     doLast {
-       file(datasetsDirectory).listFiles()?.get(4)?.let {
-//            javaexec {
-//                classpath = files("$dependencyDirectory/jpf-core/build/RunJPF.jar")
-//                jvmArgs = listOf(
-//                    "-Xmx1024m",
-//                    "-ea"
-//                )
-//
-//                workingDir = File(dependencyDirectory)
-//
-//                args(
-//                    "${it.absolutePath}/${it.name}.jpf"
-//                )
-//                standardOutput = FileOutputStream("${it.absolutePath}/${it.name}.jpf.output")
-//            }
-           // temporarily use an external project structure
+        //file(datasetsDirectory).listFiles()?.forEach {
+        file(datasetsDirectory).listFiles()?.get(8)?.let {
+    /*            javaexec {
+    //                classpath = files("$dependencyDirectory/jpf-core/build/RunJPF.jar")
+    //                jvmArgs = listOf(
+    //                    "-Xmx1024m",
+    //                    "-ea"
+    //                )
+    //
+    //                workingDir = File(dependencyDirectory)
+    //
+    //                args(
+    //                    "${it.absolutePath}/${it.name}.jpf"
+    //                )
+    //                standardOutput = FileOutputStream("${it.absolutePath}/${it.name}.jpf.output")
+    //            }
+     */
+            // temporarily use an external project structure
             javaexec {
                 classpath = files("D:/IdeaProjects/SPF/jpf-tryout/build/classes/java/main/",
                     fileTree("D:/IdeaProjects/SPF/jpf-core/build/libs/"),
@@ -222,7 +229,7 @@ tasks.register("analyzeJpfInLoop") {
                     "-ea",
                 )
                 environment("PATH", "D:\\IdeaProjects\\SPF\\jpf-symbc\\lib\\;"
-                    + System.getenv("PATH"))
+                        + System.getenv("PATH"))
 
                 println(systemProperties["java.library.path"])
 
